@@ -1,0 +1,57 @@
+Algorithm: Smart Expense Tracker
+Step 1: Start
+Step 2: Login System
+Check if password file exists
+If not:
+Ask user to create password
+Store password in file
+Else:
+Ask user to enter password
+Allow only 3 attempts
+If correct → continue
+Else → terminate program
+Step 3: Display Menu
+
+Show options:
+
+Add Expense
+View Expenses
+Search by Date
+Monthly Report
+Total Expense
+Edit Expense
+Delete Expense
+Category-wise Total
+Change Password
+Exit
+Step 4: Perform Operation
+Case 1: Add Expense
+Input date, category, amount
+Store in file
+Case 2: View Expenses
+Read file
+Display all records
+Case 3: Search by Date
+Input date
+Display matching records
+Case 4: Monthly Report
+Input month
+Calculate total for that month
+Case 5: Total Expense
+Calculate total of all records
+Case 6: Edit Expense
+Input date
+Modify record
+Case 7: Delete Expense
+Input date
+Remove record
+Case 8: Category-wise Total
+Calculate total for each category
+Case 9: Change Password
+Verify old password
+Update new password
+Case 10: Exit
+Stop program
+Step 5: Repeat
+Return to menu until user selects Exit
+Step 6: End
