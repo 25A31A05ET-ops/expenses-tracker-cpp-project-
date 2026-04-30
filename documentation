@@ -1,0 +1,81 @@
+PROJECT DOCUMENT
+🏷️ Project Title
+Team Members
+Member 1
+Member 2
+Member 3
+Member 4
+  🎯 Objective
+
+The objective of this project is to develop a simple and efficient application to manage daily expenses. The system allows users to add, view, search, delete, and analyze expenses without using external files.
+
+🧩 Modules in the Project
+Login Module
+Allows user to create and verify password
+Add Expense Module
+Takes date, category, and amount from user
+View Expense Module
+Displays all stored expenses
+Search Module
+Searches expenses based on date
+Monthly Report Module
+Calculates total expenses for a given month
+Total Expense Module
+Shows overall spending
+Delete Module
+Deletes a selected expense
+⚙️ Requirements
+  Software Requirements
+C++ Compiler (CodeBlocks / VS Code / Turbo C++)
+Basic C++ Libraries (iostream, vector, string)
+Hardware Requirements
+Computer or Laptop
+Minimum 4GB RAM
+🔬 Methodology
+The project is implemented using C++ programming language
+Data is stored using vector (dynamic array)
+User input is handled using getline() to avoid errors
+Operations like add, delete, search are performed on vector
+Menu-driven approach is used for user interaction
+  ***Algorithm
+Step 1:
+Start the program
+Step 2:
+Create password and login
+Step 3:
+Display menu options
+Step 4:
+User selects operation
+Step 5:
+Perform selected operation:
+Add → store in vector
+View → display all records
+Search → match date
+Delete → remove selected record
+Report → calculate totals
+Step 6:
+Repeat until user exits
+Step 7:
+Stop program
+  Features
+User-friendly menu system
+Input validation
+Dynamic data storage
+No file dependency
+Fast execution
+Simple and efficient design 
+  **Limitations
+Data is not saved permanently
+Data is lost after program exit
+No graphical interface
+  
+*** Future Enhancements
+Add file storage (CSV / database)
+GUI using C++ frameworks
+Edit expense feature
+Category-wise analysis
+Charts and reports
+  
+  📌 Conclusion
+The Smart Expense Tracker successfully demonstrates how basic data structures like vectors can be used to manage real-world data efficiently. It provides a simple and effective way to track expenses using core C++ concepts.
+Smart Expense Tracker (C++ – In-Memory System)
