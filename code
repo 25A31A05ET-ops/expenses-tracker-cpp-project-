@@ -1,0 +1,201 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+using namespace std;
+
+struct Expense {
+    string date;
+    string category;
+    float amount;
+};
+
+vector<Expense> expenses; // 🔥 stored in memory
+
+// 🔐 LOGIN
+bool login() {
+    string password, input;
+
+    cout << "🔐 Create a password: ";
+    getline(cin, password);
+
+    cout << "\n🔑 Login to continue\n";
+
+    for (int i = 3; i > 0; i--) {
+        cout << "Enter password: ";
+        getline(cin, input);
+
+        if (input == password) {
+            cout << "✅ Access Granted!\n";
+            return true;
+        } else {
+            cout << "❌ Wrong Password! Attempts left: " << i - 1 << endl;
+        }
+    }
+    return false;
+}
+
+// ➕ ADD EXPENSE
+void addExpense() {
+    Expense e;
+
+    cout << "Enter date (DD-MM-YYYY): ";
+    getline(cin, e.date);
+
+    cout << "Enter category: ";
+    getline(cin, e.category);
+
+    string amt;
+    cout << "Enter amount: ";
+    getline(cin, amt);
+
+    try {
+        e.amount = stof(amt);
+    } catch (...) {
+        cout << "❌ Invalid amount!\n";
+        return;
+    }
+
+    expenses.push_back(e);
+
+    cout << "✅ Expense added!\n";
+}
+
+// 📄 VIEW EXPENSES
+void viewExpenses() {
+    if (expenses.empty()) {
+        cout << "❌ No records available!\n";
+        return;
+    }
+
+    cout << "\n===== EXPENSE LIST =====\n";
+
+    for (int i = 0; i < expenses.size(); i++) {
+        cout << i + 1 << ". "
+             << expenses[i].date << " | "
+             << expenses[i].category << " | "
+             << expenses[i].amount << endl;
+    }
+}
+
+// 🔍 SEARCH
+void searchByDate() {
+    string searchDate;
+    bool found = false;
+
+    cout << "Enter date: ";
+    getline(cin, searchDate);
+
+    for (auto &e : expenses) {
+        if (e.date == searchDate) {
+            cout << e.date << " | " << e.category << " | " << e.amount << endl;
+            found = true;
+        }
+    }
+
+    if (!found)
+        cout << "❌ No records found!\n";
+}
+
+// 📅 MONTHLY REPORT
+void monthlyReport() {
+    string month;
+    float total = 0;
+
+    cout << "Enter month (MM): ";
+    getline(cin, month);
+
+    for (auto &e : expenses) {
+        if (e.date.length() >= 5 && e.date.substr(3, 2) == month) {
+            total += e.amount;
+        }
+    }
+
+    cout << "📅 Total for month " << month << ": " << total << endl;
+}
+
+// 💰 TOTAL
+void totalExpense() {
+    float total = 0;
+
+    for (auto &e : expenses) {
+        total += e.amount;
+    }
+
+    cout << "💰 Total Expense: " << total << endl;
+}
+
+// 🗑️ DELETE
+void deleteExpense() {
+    if (expenses.empty()) {
+        cout << "❌ No records to delete!\n";
+        return;
+    }
+
+    int index;
+    string input;
+
+    viewExpenses();
+
+    cout << "Enter expense number to delete: ";
+    getline(cin, input);
+
+    try {
+        index = stoi(input);
+    } catch (...) {
+        cout << "❌ Invalid input!\n";
+        return;
+    }
+
+    if (index < 1 || index > expenses.size()) {
+        cout << "❌ Invalid index!\n";
+        return;
+    }
+
+    expenses.erase(expenses.begin() + (index - 1));
+
+    cout << "🗑️ Expense deleted!\n";
+}
+
+// 🚀 MAIN
+int main() {
+
+    if (!login()) return 0;
+
+    int choice;
+
+    do {
+        cout << "\n===== SMART EXPENSE TRACKER =====\n";
+        cout << "1. Add Expense\n";
+        cout << "2. View Expenses\n";
+        cout << "3. Search by Date\n";
+        cout << "4. Monthly Report\n";
+        cout << "5. Total Expense\n";
+        cout << "6. Delete Expense\n";
+        cout << "7. Exit\n";
+        cout << "Enter choice: ";
+
+        string input;
+        getline(cin, input);
+
+        try {
+            choice = stoi(input);
+        } catch (...) {
+            cout << "❌ Invalid choice!\n";
+            continue;
+        }
+
+        switch(choice) {
+            case 1: addExpense(); break;
+            case 2: viewExpenses(); break;
+            case 3: searchByDate(); break;
+            case 4: monthlyReport(); break;
+            case 5: totalExpense(); break;
+            case 6: deleteExpense(); break;
+            case 7: cout << "Exiting...\n"; break;
+            default: cout << "❌ Invalid choice!\n";
+        }
+
+    } while(choice != 7);
+
+    return 0;
+}
